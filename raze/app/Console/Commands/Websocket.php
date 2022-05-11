@@ -3,6 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use MyApp\Websocket as MyAppWebsocket;
+use Ratchet\Http\HttpServer;
+use Ratchet\Server\IoServer;
+use Ratchet\WebSocket\WsServer;
 
 class Websocket extends Command
 {
@@ -27,6 +31,15 @@ class Websocket extends Command
      */
     public function handle()
     {
-        $this->info(string:'Все работает');
+        $server = IoServer::factory(
+            new HttpServer(
+                new WsServer(
+                    new \App\Helpers\Websocket()
+                )
+            ),
+            8080
+        );
+
+        $server->run();
     }
 }

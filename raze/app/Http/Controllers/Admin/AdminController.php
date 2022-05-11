@@ -30,6 +30,7 @@ class AdminController extends Controller
             'categories_count' => $categories_count,
         ]);
     }
+    
     public function loginAs(Request $request, $loginAvtor)
     {
         Auth::loginUsingId($loginAvtor);

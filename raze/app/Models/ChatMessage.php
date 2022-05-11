@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Models\Role as ModelsRole;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-class Role extends Model
+
+class ChatMessage extends Model
 {
     use HasFactory;
-    
+
+
+
 }
