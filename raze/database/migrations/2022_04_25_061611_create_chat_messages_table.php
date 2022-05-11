@@ -18,11 +18,10 @@ return new class extends Migration
             $table->bigInteger('sender_id')->unsigned();
             $table->bigInteger('reciver_id')->unsigned();
             $table->text('text');
-            $table->softDeletes();
-            $table->timestamps();
-
             $table->foreign('sender_id')->on('users')->references('id');
             $table->foreign('reciver_id')->on('users')->references('id');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
