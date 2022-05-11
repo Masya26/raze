@@ -57,6 +57,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('message') }}" class="nav-link">
+                                <i class="bi bi-chat-right"></i>
+                                <p>
+                                    Чат
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-newspaper"></i>
                                 <p>

@@ -33,7 +33,7 @@ Route::middleware(['isadmin'])->prefix('admin_panel')->group(function () {
 
 });
 Route::resource('post', App\Http\Controllers\Admin\PostController::class)->except(['edit', 'update','destroy']);
-
+Route::get('/message',[App\Http\Controllers\ChatMessageController::class,'index'])->name('message');
 Route::middleware(['idpost'])->group(function(){
     Route::get('/post/{post}/edit',[App\Http\Controllers\Admin\PostController::class, 'edit'])->name('post.edit');
     Route::put('/post/{post}/revive', [App\Http\Controllers\Admin\PostController::class, 'revive'])->name('post.revive');
