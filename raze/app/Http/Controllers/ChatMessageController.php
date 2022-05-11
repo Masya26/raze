@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use App\Models\ChatMessage;
 class ChatMessageController extends Controller
 {
     /**
@@ -14,12 +14,12 @@ class ChatMessageController extends Controller
      */
     public function index()
     {
-
+        $mess = ChatMessage::get();
         $users = User::withTrashed()->get();
 
 
         return view('messanger.index', [
-
+            'messages'=>$mess,
             'users' => $users,
 
         ]);
@@ -32,7 +32,10 @@ class ChatMessageController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::withTrashed()->get();
+        return view('messanger.index', [
+            'users'=>$users,
+        ]);
     }
 
     /**
@@ -43,7 +46,11 @@ class ChatMessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_message= new ChatMessage();
+        $new_message->text = $request->text;
+        $new_message->save();
+
+        return redirect(('/messages'));
     }
 
     /**

@@ -45,66 +45,36 @@
             </div>
           </div>
         </div>
+         <form action="{{ route('message.store') }}" method="POST">
+            @csrf
+            <div class="col-md-6 col-lg-7 col-xl-8">
 
-        <div class="col-md-6 col-lg-7 col-xl-8">
+            <ul class="list-unstyled">
+                @foreach ($users as $user)
+                    <li class="p-2 border-bottom" style="background-color: #eee;">
+                    <a href="#!" class="d-flex justify-content-between">
+                        <div class="d-flex flex-row">
 
-          <ul class="list-unstyled">
-            <li class="d-flex justify-content-between mb-4">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">Brad Pitt</p>
-                  <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
+                        <div class="pt-1">
+                            <p class="fw-bold mb-0">{{ $user->name }}</p>
+                            <p class="small text-muted" id="message"></p>
+                        </div>
+                        </div>
+                    </a>
+                    </li>
+                    @endforeach
+                <li class="bg-white mb-3">
+                <div class="form-outline">
+                    <label class="form-label" for="textAreaExample2">Message:</label>
+                    <textarea class="form-control" id="textAreaExample2" rows="4"></textarea>
+
                 </div>
-                <div class="card-body">
-                  <p class="mb-0">
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="d-flex justify-content-between mb-4">
-              <div class="card w-100">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">Lara Croft</p>
-                  <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
+                </li>
+                <button type="submit" class="btn btn-info btn-rounded float-end">Send</button>
+            </ul>
 
-                  </p>
-                </div>
-              </div>
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-            </li>
-            <li class="d-flex justify-content-between mb-4">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">Brad Pitt</p>
-                  <p class="text-muted small mb-0"><i class="far fa-clock"></i> 10 mins ago</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
-
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="bg-white mb-3">
-              <div class="form-outline">
-                <label class="form-label" for="textAreaExample2">Message:</label>
-                <textarea class="form-control" id="textAreaExample2" rows="4"></textarea>
-
-              </div>
-            </li>
-            <button type="button" class="btn btn-info btn-rounded float-end">Send</button>
-          </ul>
-
-        </div>
-
+            </div>
+    </form>
       </div>
 
     </div>
