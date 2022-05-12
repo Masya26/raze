@@ -16,5 +16,13 @@ class ChatMessage extends Model
     {
         return $this->belongsTo(User::class)->withTrashed();
     }
+    public function sender()
+    {
+        return $this->belongsTo(User::class,'sender_id');
+    }
+    public function reciver()
+    {
+        return $this->belongsTo(User::class,'reciver_id');
+    }
 
 }

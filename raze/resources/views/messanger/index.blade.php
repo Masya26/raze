@@ -2,50 +2,61 @@
 <html lang="ru">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="{{asset('js/app.js')}}"></script>
 
 
 
 <section class="msger">
     <header class="msger-header">
-      <div class="msger-header-title">
-        <i class="fas fa-comment-alt"></i> SimpleChat
-      </div>
-      <div class="msger-header-options">
-        <span><i class="fas fa-cog"></i></span>
-      </div>
+        <div class="msger-header-title">
+            <i class="fas fa-comment-alt"></i> SimpleChat
+        </div>
+        <div class="msger-header-options">
+            <span><i class="fas fa-cog"></i></span>
+        </div>
     </header>
 
     <main class="msger-chat">
-      <div class="msg left-msg">
-        <div
-         class="msg-img"
-         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
-        ></div>
-    @foreach ($messages as $message)
-    {{dd($message)}};
-          <div class="msg-info">
-            <div class="msg-info-name">{{$message->user->name}}</div>
-            <div class="msg-info-time"></div>
-          </div>
+        <div class="msg left-msg">
+            <div class="msg-img"
+                style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+            @foreach ($messages as $message)
+                {{-- {{dd($message)}}; --}}
+                <div class="msg-info">
+                    <div class="msg-info-name">{{ $message->sender->name }}</div>
+                    <div class="msg-info-time"></div>
+                </div>
 
-          <div class="msg-text">
-            {{$message['text']}}
-          </div>
+                <div class="msg-text">
+                    {{ $message['text'] }}
+                </div>
         </div>
-      </div>
-@endforeach
+        </div>
+        @endforeach
     </main>
 
     <form action="{{ route('message.store') }}" method="POST" class="msger-inputarea">
         @csrf
-      <input type="text" name="text" class="msger-input" id="exampleFormControlTextarea1" placeholder="Enter your message...">
-      <button type="submit" class="msger-send-btn">Send</button>
+        <input type="text" name="text" class="msger-input" id="exampleFormControlTextarea1"
+            placeholder="Enter your message...">
+        <button type="submit" class="msger-send-btn">Send</button>
     </form>
-  </section>
+</section>
+<script>
+    Echo.channel(`Channel`)
+        .listen('TranslationEvent', (e) => {
+            console.log(e.order);
+        });
+</script>
+
 {{-- <script>
     let socket = new WebSocket("ws://192.168.19.27:8080");
     socket.onopen = function(e) {
