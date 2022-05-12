@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('messanger.index') }}" class="nav-link">
+                            <a href="{{ route('message.index') }}" class="nav-link">
                                 <i class="bi bi-chat-right"></i>
                                 <p>
                                     Чат

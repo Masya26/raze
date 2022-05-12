@@ -10,6 +10,7 @@ class ChatMessage extends Model
     use HasFactory;
     protected $fillable = [
         'text',
+        'reciver_id',
     ];
     public function user()
     {

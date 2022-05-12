@@ -35,14 +35,10 @@ class ChatMessageController extends Controller
     public function create()
     {
         $users = User::withTrashed()->get();
-        $new_message=ChatMessage::get();
-
-        $new_message->text = $request->text;
-        $new_message->where('sender_id',Auth::id())->get();
-        $new_message->where('reciver_id','2')->get();
+        $messages = ChatMessage::get();
         return view('messanger.index', [
             'users'=>$users,
-
+            'messages'=>$messages,
         ]);
     }
 
@@ -55,14 +51,16 @@ class ChatMessageController extends Controller
     public function store(Request $request)
     {
 
+        $receiver = Auth::id() == 2 ? 3 : 2;
 
-
-
-        auth()->user()->messages()->create($request->all());
-
-        return view('messanger.index',[
-            'new_message' => $new_message
-        ]);
+        $new_message = auth()->user()->sendedMessages()->create(array_merge(
+            $request->all(),
+            [
+                'reciver_id' => $receiver
+            ]
+        ));
+        // auth()->user()->receivedMessages()->create($request->all());
+        return redirect('/message');
     }
 
     /**
