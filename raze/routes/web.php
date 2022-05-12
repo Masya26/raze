@@ -38,7 +38,6 @@ Route::resource('post', App\Http\Controllers\Admin\PostController::class)->excep
 Route::resource('message', ChatMessageController::class)->only([
     'index', 'create','store'
 ]);
-Route::get('/message/{message}/index',[App\Http\Controllers\ChatMessageController::class, 'index'])->name('message.index');
 Route::middleware(['idpost'])->group(function(){
     Route::get('/post/{post}/edit',[App\Http\Controllers\Admin\PostController::class, 'edit'])->name('post.edit');
     Route::put('/post/{post}/revive', [App\Http\Controllers\Admin\PostController::class, 'revive'])->name('post.revive');
