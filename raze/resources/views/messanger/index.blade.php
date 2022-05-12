@@ -9,75 +9,58 @@
 
 
 
-<section style="background-color: rgb(211, 211, 211);">
-    <div class="container py-5">
+<section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <i class="fas fa-comment-alt"></i> SimpleChat
+      </div>
+      <div class="msger-header-options">
+        <span><i class="fas fa-cog"></i></span>
+      </div>
+    </header>
 
-      <div class="row">
+    <main class="msger-chat">
+      <div class="msg left-msg">
+        <div
+         class="msg-img"
+         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+        ></div>
 
-        <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">BOT</div>
+            <div class="msg-info-time">12:45</div>
+          </div>
 
-          <h5 class="nav-item">
-            <a href="{{ route('adminpanel') }}" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                    Главная
-                </p>
-            </a></h5>
-
-          <div class="card">
-            <div class="card-body">
-
-              <ul class="list-unstyled mb-0">
-                @foreach ($users as $user)
-                <li class="p-2 border-bottom" style="background-color: #eee;">
-                  <a href="#!" class="d-flex justify-content-between">
-                    <div class="d-flex flex-row">
-
-                      <div class="pt-1">
-                        <p class="fw-bold mb-0">{{ $user->name }}</p>
-                        <p class="small text-muted" id="message"></p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                @endforeach
-              </ul>
-            </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
           </div>
         </div>
-         <form action="{{ route('message.store') }}" method="POST">
-            @csrf
-            <div class="col-md-6 col-lg-7 col-xl-8">
-
-            <ul class="list-unstyled">
-                @foreach ($users as $user)
-                    <li class="p-2 border-bottom" style="background-color: #eee;">
-                    <a href="#!" class="d-flex justify-content-between">
-                        <div class="d-flex flex-row">
-
-                        <div class="pt-1">
-                            <p class="fw-bold mb-0">{{ $user->name }}</p>
-                            <p class="small text-muted" id="message"></p>
-                        </div>
-                        </div>
-                    </a>
-                    </li>
-                    @endforeach
-                <li class="bg-white mb-3">
-                <div class="form-outline">
-                    <label class="form-label" for="textAreaExample2">Message:</label>
-                    <textarea class="form-control" id="textAreaExample2" rows="4"></textarea>
-
-                </div>
-                </li>
-                <button type="submit" class="btn btn-info btn-rounded float-end">Send</button>
-            </ul>
-
-            </div>
-    </form>
       </div>
 
-    </div>
+      <div class="msg right-msg">
+        <div
+         class="msg-img"
+         style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+        ></div>
+
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">Sajad</div>
+            <div class="msg-info-time">12:46</div>
+          </div>
+
+          <div class="msg-text">
+            You can change your name in JS section!
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <form class="msger-inputarea">
+      <input type="text" class="msger-input" placeholder="Enter your message...">
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
   </section>
 {{-- <script>
     let socket = new WebSocket("ws://192.168.19.27:8080");
