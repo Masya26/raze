@@ -50,15 +50,15 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
         <button type="submit" class="msger-send-btn">Send</button>
     </form>
 </section>
-<script>
+{{-- <script>
     Echo.channel(`Channel`)
         .listen('TranslationEvent', (e) => {
             console.log(e.order);
         });
-</script>
+</script> --}}
 
-{{-- <script>
-    let socket = new WebSocket("ws://192.168.19.27:8080");
+<script>
+    let socket = new WebSocket("ws://192.168.19.52:8080");
     socket.onopen = function(e) {
   alert("[open] Соединение установлено");
   alert("Отправляем данные на сервер");
@@ -82,4 +82,4 @@ socket.onclose = function(event) {
 socket.onerror = function(error) {
   alert(`[error] ${error.message}`);
 };
-</script> --}}
+</script>
