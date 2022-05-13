@@ -50,7 +50,6 @@ class ChatMessageController extends Controller
      */
     public function store(Request $request)
     {
-
         $receiver = Auth::id() == 2 ? 3 : 2;
 
         $new_message = auth()->user()->sendedMessages()->create(array_merge(
@@ -59,8 +58,9 @@ class ChatMessageController extends Controller
                 'reciver_id' => $receiver
             ]
         ));
+        
         // auth()->user()->receivedMessages()->create($request->all());
-        return redirect('/message');
+        // return view('messanger.index');
     }
 
     /**
