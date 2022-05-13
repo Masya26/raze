@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\ChatMessage;
+use Illuminate\Support\Facades\Auth;
+
 class ChatMessageController extends Controller
 {
     /**
@@ -33,8 +35,10 @@ class ChatMessageController extends Controller
     public function create()
     {
         $users = User::withTrashed()->get();
+        $messages = ChatMessage::get();
         return view('messanger.index', [
             'users'=>$users,
+            'messages'=>$messages,
         ]);
     }
 
@@ -46,11 +50,17 @@ class ChatMessageController extends Controller
      */
     public function store(Request $request)
     {
-        $new_message= new ChatMessage();
-        $new_message->text = $request->text;
-        $new_message->save();
+        $receiver = Auth::id() == 2 ? 3 : 2;
 
-        return redirect(('/messages'));
+        $new_message = auth()->user()->sendedMessages()->create(array_merge(
+            $request->all(),
+            [
+                'reciver_id' => $receiver
+            ]
+        ));
+
+        // auth()->user()->receivedMessages()->create($request->all());
+        // return view('messanger.index');
     }
 
     /**

@@ -11,7 +11,7 @@
                     <h1 class="m-0">Добавить сатью</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            
+
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
