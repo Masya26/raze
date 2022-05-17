@@ -56,7 +56,7 @@ integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ
 </script> --}}
 
 <script>
-    let socket = new WebSocket("ws://192.168.19.52:8080");
+    let socket = new WebSocket("ws://192.168.19.27:8080");
     socket.onopen = function(e) {
         //   alert("[open] Соединение установлено");
         //   alert("Отправляем данные на сервер");
